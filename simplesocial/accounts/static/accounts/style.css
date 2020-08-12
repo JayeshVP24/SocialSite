@@ -1,0 +1,7 @@
+#main{
+    border-radius: 10px;
+    /* background: linear-gradient(145deg, #e6981e, #ffb523); */
+    box-shadow:  9px 9px 22px #c28019, 
+             -9px -9px 22px #ffd229;
+    padding: 5px;
+}
