@@ -1,42 +1,50 @@
 <!DOCTYPE html>
+{% load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSocial</title>
     <!-- Boostrap 4 CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Boostrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'simplesocial/master.css' %}">
+    <link rel="stylesheet" href="{% static '/css/master.css' %}">
+    {% block headtag %}
+      
+    {% endblock headtag %}
 </head>
 <body>
-
-    <nav class="navbar mynav" role="navigation" id="navbar">
-        <div class="container">
-            <a href="{% url 'home' %}" class="navbar-brand mynav">JSocial</a>
-
-            <ul class="nav navbar-nav navbar-right">
+<div class="back">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light navi" >
+            <a id="brand" class="navbar-brand mb-0 " href="{% url 'home' %}">JSocial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="nav navbar-nav ml-auto navi">
                 {% if user.is_authenticated %}
-                    <li><a href="">Post</a></li>
-                    <li><a href="">Groups</a></li>
-                    <li><a href="">Create Group</a></li>0
-                    <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="">Post</a>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="">Groups</a>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="">Create Group</a>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="{% url 'accounts:logout' %}">Log Out</a>
                 {% else %}
-                    <li><a href="">Groups</a></li>
-                    <li><a href="{% url 'accounts:login' %}">Log In</a></li>
-                    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="">Groups</a>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="{% url 'accounts:login' %}">Log In</a>
+                    <a class="nav-item nav-link" style="color: rgb(0, 0, 0);" href="{% url 'accounts:signup' %}">Sign Up</a>
                 {% endif %}
-                
-            </ul>
-        </div>
-    </nav>
+              </div>
+            </div>
+          </nav>
+    </div>
+</div>
+<hr id="line">
     <div class="container">
         {% block content %}
         

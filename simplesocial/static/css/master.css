@@ -1,0 +1,63 @@
+.back{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+
+.jumbotron{
+    background: rgb(255,169,33);
+    background: linear-gradient(90deg, rgba(255,169,33,1) 0%, rgba(255,241,33,1) 100%);
+    border-radius: 10px;
+    /* background: linear-gradient(145deg, #e6981e, #ffb523); */
+    box-shadow:  9px 9px 22px #c28019, 
+             -9px -9px 22px #ffd229;
+}
+
+.navi > a:hover{
+    background-color: rgba(255, 255, 255, 0.226);
+    border-radius: 5px;
+    color: rgb(41, 41, 41);
+    
+}
+
+
+
+#brand{
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background: linear-gradient(145deg, #e6981e, #ffb523);
+    box-shadow:  9px 9px 22px #c28019, 
+             -9px -9px 22px #ffd229;
+}
+
+.nav-item{
+    font-size: 1.5em;
+}
+
+label{
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    box-shadow:  9px 9px 22px #c28019, 
+             -9px -9px 22px #ffd229;
+}
+
+body{
+    background: rgb(255,157,0);
+    background: linear-gradient(90deg, rgba(255,157,0,1) 0%, rgba(255,239,0,1) 100%);
+}
+
+.btn{
+    border-radius: 5px;
+    font-weight: bold;
+    background: linear-gradient(145deg, #e6981e, #ffb523);
+    box-shadow:  9px 9px 22px #c28019, 
+             -9px -9px 22px #ffd229;
+    color: white;
+}

@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-    <h1>Welcome to JSocial!</h1>
+    <div class="jumbotron">
+        <h1>Welcome to JSocial!</h1>
+        <h2>This is Your One Destination to talk about <span style="color:rgb(243, 0, 0); font-weight: bold;" id="change"></span></h2>
+        <h2>Meet People with similar Interest, Connect and Grow</h2>
+    </div>
+    <script>
+        var text=['Movies','Series','Games','Art','Sports','And much more....']
+        textSequence(0)
+        function textSequence(i){
+            if(text.length > i){
+                setTimeout(function(){
+                    document.getElementById("change").innerHTML = text[i];
+                    textSequence(++i)
+                },1000)
+            } else if(text.length == i){
+                textSequence(0);
+            }
+        }
+    </script>
 {% endblock content %}
