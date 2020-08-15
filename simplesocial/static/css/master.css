@@ -62,3 +62,10 @@ body{
              -9px -9px 22px #ffd229;
     color: white;
 }
+
+.btn:hover{
+    border-radius: 5px;
+background: linear-gradient(145deg, #ffc800, #e6a800);
+box-shadow:  10px 10px 20px #ebac00, 
+             -10px -10px 20px #ffca00;
+}
