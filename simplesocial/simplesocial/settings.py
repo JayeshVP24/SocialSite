@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'groups',
+    'posts',
     'bootstrap4',
     'accounts',
     'django.contrib.admin',

@@ -5,6 +5,7 @@ from django.views import generic
 from braces.views import SelectRelatedMixin
 from . import models, forms
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ class UserPosts(generic.ListView):
 
     def get_queryset(self):
         try:
-            self.post.user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
+            self.post_user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
         except User.DoesNotExist:
             raise Http404
         else:
@@ -37,24 +38,27 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(user__username__isexact=self.kwargs.get('username'))
+        return queryset.filter(user__username__exact=self.kwargs.get('username'))
     
 class CreatePost(LoginRequiredMixin,SelectRelatedMixin,generic.CreateView):
     
-    field = ('message','group')
+    fields = ('message','group')
     model = models.Post
-
     def form_valid(self,form):
         self.objects = form.save(commit=False)
         self.objects.user = self.request.user
         self.objects.save()
         return super().form_valid(form)
 
-class DeleteView(LoginRequiredMixin,SelectRelatedMixin,generic.DeleteView):
+class DeletePost(LoginRequiredMixin,SelectRelatedMixin,generic.DeleteView):
     model = models.Post
     select_related = ('user','group')
     success_url = reverse_lazy('posts:all')
 
-    def get_queryset(self,*args,**kwargs):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user_id = self.request.user.id)
+
+    def delete(self,*args,**kwargs):
         messages.success(self.request,'Post Deleted')
         return super().delete(*args,**kwargs)
